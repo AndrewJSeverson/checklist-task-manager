@@ -36,6 +36,8 @@ public class ChecklistServiceImpl implements ChecklistService{
 	ChecklistUserRepository checklistUserRepository;
 	@Autowired
 	ChecklistCategoryRepository checklistCategoryRepository;
+	@Autowired
+	EmailService emailService;
 
 	/* (non-Javadoc)
 	 * @see com.severson.taskmanager.services.ChecklistService#createNewChecklist(com.severson.taskmanager.requests.ChecklistRequest)
@@ -122,6 +124,11 @@ public class ChecklistServiceImpl implements ChecklistService{
 		// create and save new record
 		ChecklistUser newCheckListUser = new ChecklistUser(userToAdd, checklistToUpdate);
 		newCheckListUser = checklistUserRepository.save(newCheckListUser);
+		
+		// send email
+		emailService.sendEmail("New Checklist Assignment", 
+				"You have been added to the following checklist: " + checklistToUpdate.getName(), 
+				userToAdd.getEmail());
 		
 		// add to checklist and return
 		checklistToUpdate.getChecklistUsers().add(newCheckListUser);

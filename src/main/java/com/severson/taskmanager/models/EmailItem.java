@@ -34,6 +34,14 @@ public class EmailItem {
 
 	public EmailItem(){}
 	
+	public EmailItem(String subject, String body, String toEmail, Boolean sent) {
+		super();
+		this.subject = subject;
+		this.body = body;
+		this.toEmail = toEmail;
+		this.sent = sent;
+	}
+	
 	public EmailItem(int id, String subject, String body, String toEmail, Boolean sent) {
 		super();
 		this.id = id;

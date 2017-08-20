@@ -10,6 +10,8 @@ The projects Spring-Boot application is meant to interface with a cloud foundry 
     * export spring_datasource_url=jdbc:postgresql://localhost:5432/*your local database name here*
     * export spring_datasource_username=*your local database username here*
     * export spring_jpa_hibernate_ddl-auto=update
+    * export sendgrid_username=gzL8TBKeBc
+    * export sendgrid_password=culOoL5InvmA5190
 * Download and run Redis locally on your computer
 
 ##Install and Run
