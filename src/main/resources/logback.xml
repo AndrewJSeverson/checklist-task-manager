@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+
+	<logger name="com.ge.digital" level="DEBUG" />
+	<!-- Apache -->
+	<logger name="org.apache" level="Info" />
+	<!-- Spring -->
+	<logger name="org.springframework" level="WARN" />
+	<logger name="org.springframework.web" level="DEBUG" />
+	<logger name="org.springframework.security" level="WARN" />
+	<logger name="org.springframework.cache" level="WARN" />
+	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+		<resetJUL>true</resetJUL>
+	</contextListener>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder 
+			by default -->
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} %line - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>

@@ -1,0 +1,19 @@
+---
+applications:
+  - name: task-manager-service
+    buildpack: https://github.com/cloudfoundry/java-buildpack.git
+    path: target/task-manager-0.0.1-SNAPSHOT.jar
+    memory: 1GB
+    instances: 1
+    services:
+      - task-manager-postgres
+      - task-manager-redis
+      - task-manager-sendgrid
+env:
+    spring_redis_host: redis-10007.c11.us-east-1-2.ec2.cloud.redislabs.com
+    spring_redis_password: MLnlF6SYfapn6QTo
+    spring_redis_port: 10007
+    spring_datasource_password: 8kZJ1zn69YQW3FKfm6VTVw35ixKOcxoQ
+    spring_datasource_url: jdbc:postgresql://pzspiybu:8kZJ1zn69YQW3FKfm6VTVw35ixKOcxoQ@pellefant-02.db.elephantsql.com:5432/pzspiybu
+    spring_datasource_username: pzspiybu
+    spring_jpa_hibernate_ddl-auto: update
