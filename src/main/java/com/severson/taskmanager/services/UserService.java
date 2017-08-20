@@ -3,6 +3,8 @@ package com.severson.taskmanager.services;
 import com.severson.taskmanager.exceptions.ChecklistDoesNotExistException;
 import com.severson.taskmanager.exceptions.UserDoesNotExistException;
 import com.severson.taskmanager.models.Checklist;
+import com.severson.taskmanager.models.User;
+import com.severson.taskmanager.requests.UserRequest;
 
 /**
  * @author andrewseverson
@@ -25,4 +27,10 @@ public interface UserService {
 	 * @throws ChecklistDoesNotExistException
 	 */
 	public Checklist getChecklistForUser(Integer checklistId, Integer userId) throws UserDoesNotExistException, ChecklistDoesNotExistException; 
+	
+	/**
+	 * @param request
+	 * @return new user
+	 */
+	public User addUserToDatabase(UserRequest request);
 }

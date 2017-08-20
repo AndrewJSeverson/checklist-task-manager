@@ -30,6 +30,13 @@ public class User {
 	private String email;
 	
 	public User() {}
+	
+	public User(String firstName, String lastName, String email) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+	}
 
 	public User(int id, String firstName, String lastName, String email) {
 		super();

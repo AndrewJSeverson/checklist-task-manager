@@ -15,6 +15,7 @@ import com.severson.taskmanager.models.User;
 import com.severson.taskmanager.repositories.ChecklistRepository;
 import com.severson.taskmanager.repositories.TaskCompletionRepository;
 import com.severson.taskmanager.repositories.UserRepository;
+import com.severson.taskmanager.requests.UserRequest;
 
 /**
  * @author andrewseverson
@@ -122,5 +123,11 @@ public class UserServiceImpl implements UserService{
 		
 		// return checklist with new transient content
 		return checklist;
+	}
+
+	@Override
+	public User addUserToDatabase(UserRequest request) {
+		User newUser = new User(request.getFirstName(), request.getLastName(), request.getEmail());
+		return userRepository.save(newUser);
 	}
 }

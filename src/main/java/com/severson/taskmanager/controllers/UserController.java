@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.severson.taskmanager.exceptions.ChecklistTaskDoesNotExistException;
 import com.severson.taskmanager.exceptions.UserDoesNotExistException;
 import com.severson.taskmanager.requests.TaskCompletionRequest;
+import com.severson.taskmanager.requests.UserRequest;
 import com.severson.taskmanager.responses.DataResponse;
 import com.severson.taskmanager.responses.Response;
 import com.severson.taskmanager.services.ChecklistTaskService;
@@ -92,6 +93,26 @@ public class UserController {
 		} catch (UserDoesNotExistException e) {
 			logger.warn("Bad user id" , e);
 			return new ResponseEntity<>(new Response("Error", "The provided user does not exist or is not assigned to this checklist and task"), HttpStatus.BAD_REQUEST);
+		} catch (Exception e) {
+			logger.error("Error processing request", e);
+			return new ResponseEntity<>(new Response("Error", "Internal Server Error"), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+
+	/*
+	 * *************************************************************
+	 * USER ENDPOINTS _ TEMPORARY UNTIL FULL AUTH INTEGATION FROM UI APP
+	 * *************************************************************
+	 */
+	
+	@ApiOperation(value = "Add user to database", notes = "Provide the required input fields to add a user to the database")
+	@RequestMapping(value = "/", method = RequestMethod.POST)
+	public ResponseEntity<?> addUser(@RequestBody UserRequest request,
+			@RequestHeader(value = "authorization", defaultValue = "missing") String token) {
+		try{
+			return new ResponseEntity<>(new DataResponse("Success", "Successfully added the user", userService.addUserToDatabase(request)),
+					HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Error processing request", e);
 			return new ResponseEntity<>(new Response("Error", "Internal Server Error"), HttpStatus.INTERNAL_SERVER_ERROR);
