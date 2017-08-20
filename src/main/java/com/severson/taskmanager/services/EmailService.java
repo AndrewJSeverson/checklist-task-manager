@@ -40,7 +40,7 @@ public class EmailService {
 			email.setSubject(emailItem.getSubject());
 			email.setText(emailItem.getBody());
 			Response response = sendgrid.send(email);
-			if(response.getMessage().equals("success")){
+			if(response.getStatus()){
 				emailItem.setSent(true);
 				emailItemRepository.save(emailItem);
 			}

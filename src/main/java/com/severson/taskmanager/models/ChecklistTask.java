@@ -41,8 +41,14 @@ public class ChecklistTask {
 	@Column(name = "due_date")
 	private Date dueDate;
 	
+	@Column(name = "due_date_email_send")
+	private Boolean dueDateEmailSent;;
+	
 	@Column(name = "reminder_date")
 	private Date reminderDate;
+	
+	@Column(name = "reminder_date_email_send")
+	private Boolean reminderDateEmailSent;;
 	
 	@OneToMany(mappedBy = "checklistTask", cascade=CascadeType.ALL, orphanRemoval=true)
 	public List<TaskCompletion> taskCompletions;
@@ -58,6 +64,8 @@ public class ChecklistTask {
 		this.checklist = checklist;
 		this.dueDate = dueDate;
 		this.reminderDate = reminderDate;
+		this.dueDateEmailSent = false;
+		this.reminderDateEmailSent = false;
 	}
 
 	public ChecklistTask(int id, String description, Checklist checklist, Date dueDate, Date reminderDate) {
@@ -67,6 +75,8 @@ public class ChecklistTask {
 		this.checklist = checklist;
 		this.dueDate = dueDate;
 		this.reminderDate = reminderDate;
+		this.dueDateEmailSent = false;
+		this.reminderDateEmailSent = false;
 	}
 
 	/**
@@ -166,6 +176,34 @@ public class ChecklistTask {
 	 */
 	public void setTaskComplete(boolean taskComplete) {
 		this.taskComplete = taskComplete;
+	}
+
+	/**
+	 * @return the dueDateEmailSent
+	 */
+	public Boolean getDueDateEmailSent() {
+		return dueDateEmailSent;
+	}
+
+	/**
+	 * @param dueDateEmailSent the dueDateEmailSent to set
+	 */
+	public void setDueDateEmailSent(Boolean dueDateEmailSent) {
+		this.dueDateEmailSent = dueDateEmailSent;
+	}
+
+	/**
+	 * @return the reminderDateEmailSent
+	 */
+	public Boolean getReminderDateEmailSent() {
+		return reminderDateEmailSent;
+	}
+
+	/**
+	 * @param reminderDateEmailSent the reminderDateEmailSent to set
+	 */
+	public void setReminderDateEmailSent(Boolean reminderDateEmailSent) {
+		this.reminderDateEmailSent = reminderDateEmailSent;
 	}
 	
 
