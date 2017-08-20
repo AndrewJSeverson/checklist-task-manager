@@ -1,0 +1,492 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Checklist Task Manager Service",
+		"_postman_id": "b9657b40-b0c6-69d4-cb20-59e6f5fd8380",
+		"description": "Basic REST service for creating checklists and tasks for users",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api",
+			"description": "Folder for api",
+			"item": [
+				{
+					"name": "Get all checklist categories ",
+					"request": {
+						"url": "http://localhost:9000/api/v1/checklistCategories/",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Creates a new checklist category",
+					"request": {
+						"url": "http://localhost:9000/api/v1/checklistCategories/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "request"
+						},
+						"description": "Provide the required information to create a new checklist category"
+					},
+					"response": []
+				},
+				{
+					"name": "Updates an existing checklist category",
+					"request": {
+						"url": "http://localhost:9000/api/v1/checklistCategories/:checklistCategoryId?checklistCategoryId={{checklistCategoryId}}",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "request"
+						},
+						"description": "Provide the required information to update the checklist category"
+					},
+					"response": []
+				},
+				{
+					"name": "Update task",
+					"request": {
+						"url": "http://localhost:9000/api/v1/checklistTasks/:checklistTaskId/?checklistTaskId={{checklistTaskId}}",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "request"
+						},
+						"description": "Provide the required input fields to update the task"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete task",
+					"request": {
+						"url": "http://localhost:9000/api/v1/checklistTasks/:checklistTaskId/?checklistTaskId={{checklistTaskId}}",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "Delete"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all checklists",
+					"request": {
+						"url": "http://localhost:9000/api/v1/checklists/",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Creates a new checklist",
+					"request": {
+						"url": "http://localhost:9000/api/v1/checklists/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "request"
+						},
+						"description": "Provide the required information to create a new checklist"
+					},
+					"response": []
+				},
+				{
+					"name": "Updates an existing checklist",
+					"request": {
+						"url": "http://localhost:9000/api/v1/checklists/:checklistId?checklistId={{checklistId}}",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "request"
+						},
+						"description": "Provide the required information to update the checklist"
+					},
+					"response": []
+				},
+				{
+					"name": "Add task to checklist",
+					"request": {
+						"url": "http://localhost:9000/api/v1/checklists/:checklistId/checklistTasks/?checklistId={{checklistId}}",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "request"
+						},
+						"description": "Provide the required input fields to create a task form checklist"
+					},
+					"response": []
+				},
+				{
+					"name": "Get checklist for user",
+					"request": {
+						"url": "http://localhost:9000/api/v1/checklists/:checklistId/users/:userId?checklistId={{checklistId}}&userId={{userId}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "Provide the user and checklist ids to get checklist info for user"
+					},
+					"response": []
+				},
+				{
+					"name": "Add user to checklist",
+					"request": {
+						"url": "http://localhost:9000/api/v1/checklists/:checklistId/users/:userId?checklistId={{checklistId}}&userId={{userId}}",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "Provide the user and checklist ids to add user to checklist"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove user from checklist",
+					"request": {
+						"url": "http://localhost:9000/api/v1/checklists/:checklistId/users/:userId?checklistId={{checklistId}}&userId={{userId}}",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "Provide the user and checklist ids to remove user from checklist"
+					},
+					"response": []
+				},
+				{
+					"name": "Add user to database",
+					"request": {
+						"url": "http://localhost:9000/api/v1/users/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "request"
+						},
+						"description": "Provide the required input fields to add a user to the database"
+					},
+					"response": []
+				},
+				{
+					"name": "Update task completion",
+					"request": {
+						"url": "http://localhost:9000/api/v1/users/:userId/checkListTasks/:checklistTaskId/taskCompletions?checklistTaskId={{checklistTaskId}}&userId={{userId}}",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "request"
+						},
+						"description": "Provide the required input fields to update the task completion"
+					},
+					"response": []
+				},
+				{
+					"name": "Get checklists for a user",
+					"request": {
+						"url": "http://localhost:9000/api/v1/users/:userId/checklists?userId={{userId}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "Provide user id to get checklists for that user"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"description": "",
+			"item": [
+				{
+					"name": "Admin Client Token Request - Checklist Task Manager",
+					"request": {
+						"url": "https://task-manager.auth0.com/oauth/token",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"client_id\":\"7TFLNRYRYMpcY36I01LLhMRxiY8npQVE\",\"client_secret\":\"HdnQ9vermyNG_WOkjUvG0S0kVRnXhQl0ZOq2HCOWdWnKHIWlFCOg-gj0ffBQZD9c\",\"audience\":\"https://task-manager-service.cfapps.io/\",\"grant_type\":\"client_credentials\"}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "User Client Token Request - Checklist Task Manager",
+					"request": {
+						"url": "https://task-manager.auth0.com/oauth/token",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"client_id\":\"MX055QsD7mLEOvw0y4UJD40xbf58F3LP\",\"client_secret\":\"8xdCjkH_MRjdG_dEPw5YRHS8msAnQKpIWFmjJ-grYPs-UPrLBqrrS-MVW-8fhsNm\",\"audience\":\"https://task-manager-service.cfapps.io/\",\"grant_type\":\"client_credentials\"}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
