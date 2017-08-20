@@ -36,7 +36,7 @@ public class ChecklistCategoryController {
 	ChecklistCategoryService checklistCategoryService;
 	
 	@ApiOperation(value = "Get all checklist categories ", notes = "")
-	@RequestMapping(value = "/checklistCategories", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ResponseEntity<?> getChecklistCategories(
 			@RequestHeader(value = "authorization", defaultValue = "missing") String token) {
 		try{

@@ -27,10 +27,22 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/admin/system/state/*", "/v2/api-docs", "/configuration/ui", "/swagger-resources",
                 		"/configuration/security", "/swagger-ui.html", "/webjars/**", "/favicon.ico", "/**/favicon.ico").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/v1/**").hasAuthority("admin")
-                .antMatchers(HttpMethod.POST, "/api/v1/**").hasAuthority("admin")
-                .antMatchers(HttpMethod.PUT, "/api/v1/**").hasAuthority("admin")
-                .antMatchers(HttpMethod.DELETE, "/api/v1/**").hasAuthority("admin")
+                .antMatchers(HttpMethod.GET, "/api/v1/checklistCategories/**").hasAuthority("user")
+                .antMatchers(HttpMethod.POST, "/api/v1/checklistCategories/**").hasAuthority("admin")
+                .antMatchers(HttpMethod.PUT, "/api/v1/checklistCategories/**").hasAuthority("admin")
+                .antMatchers(HttpMethod.DELETE, "/api/v1/checklistCategories/**").hasAuthority("admin")
+                .antMatchers(HttpMethod.GET, "/api/v1/users/**").hasAuthority("user")
+                .antMatchers(HttpMethod.POST, "/api/v1/users/**").hasAuthority("user")
+                .antMatchers(HttpMethod.PUT, "/api/v1/users/**").hasAuthority("user")
+                .antMatchers(HttpMethod.DELETE, "/api/v1/users/**").hasAuthority("user")
+                .antMatchers(HttpMethod.GET, "/api/v1/checklistTasks/**").hasAuthority("user")
+                .antMatchers(HttpMethod.POST, "/api/v1/checklistTasks/**").hasAuthority("user")
+                .antMatchers(HttpMethod.PUT, "/api/v1/checklistTasks/**").hasAuthority("user")
+                .antMatchers(HttpMethod.DELETE, "/api/v1/checklistTasks/**").hasAuthority("user")
+                .antMatchers(HttpMethod.GET, "/api/v1/checklists/**").hasAuthority("user")
+                .antMatchers(HttpMethod.POST, "/api/v1/checklists/**").hasAuthority("user")
+                .antMatchers(HttpMethod.PUT, "/api/v1/checklists/**").hasAuthority("user")
+                .antMatchers(HttpMethod.DELETE, "/api/v1/checklists/**").hasAuthority("user")
                 .anyRequest().authenticated();
     }
 
