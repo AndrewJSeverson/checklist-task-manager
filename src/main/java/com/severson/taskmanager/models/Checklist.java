@@ -16,9 +16,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 /**
  * @author andrewseverson
  *
@@ -35,21 +32,15 @@ public class Checklist {
 	@Column(name = "name", length = 255, nullable = false)
 	private String name;
 	
-	@ManyToOne
-	@JsonIgnore
-    @JoinColumn(name = "created_by_user_id")
-	private User createdByUser;
-	
 	@Column(name = "creation_date")
 	private Date creationDate;
 	
-	@ManyToOne
-	@JsonIgnore
-    @JoinColumn(name = "last_updated_by_user_id")
-	private User lastUpdatedByUser;
-	
 	@Column(name = "last_update_date")
 	private Date lastUpdateDate;
+	
+	@ManyToOne
+    @JoinColumn(name = "checklist_catgory_id")
+	private ChecklistCategory checklistCategory;
 	
 	@OneToMany(mappedBy = "checklist", cascade=CascadeType.ALL, orphanRemoval=true)
 	public List<ChecklistUser> checklistUsers;
@@ -67,14 +58,11 @@ public class Checklist {
 	
 	public Checklist(){}
 
-	public Checklist(int id, String name, User createdByUser, Date creationDate, User lastUpdatedByUser,
-			Date lastUpdateDate) {
+	public Checklist(int id, String name, Date creationDate, Date lastUpdateDate) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.createdByUser = createdByUser;
 		this.creationDate = creationDate;
-		this.lastUpdatedByUser = lastUpdatedByUser;
 		this.lastUpdateDate = lastUpdateDate;
 	}
 
@@ -107,20 +95,6 @@ public class Checklist {
 	}
 
 	/**
-	 * @return the createdByUser
-	 */
-	public User getCreatedByUser() {
-		return createdByUser;
-	}
-
-	/**
-	 * @param createdByUser the createdByUser to set
-	 */
-	public void setCreatedByUser(User createdByUser) {
-		this.createdByUser = createdByUser;
-	}
-
-	/**
 	 * @return the creationDate
 	 */
 	public Date getCreationDate() {
@@ -135,20 +109,6 @@ public class Checklist {
 	}
 
 	/**
-	 * @return the lastUpdatedByUser
-	 */
-	public User getLastUpdatedByUser() {
-		return lastUpdatedByUser;
-	}
-
-	/**
-	 * @param lastUpdatedByUser the lastUpdatedByUser to set
-	 */
-	public void setLastUpdatedByUser(User lastUpdatedByUser) {
-		this.lastUpdatedByUser = lastUpdatedByUser;
-	}
-
-	/**
 	 * @return the lastUpdateDate
 	 */
 	public Date getLastUpdateDate() {
@@ -160,6 +120,20 @@ public class Checklist {
 	 */
 	public void setLastUpdateDate(Date lastUpdateDate) {
 		this.lastUpdateDate = lastUpdateDate;
+	}
+
+	/**
+	 * @return the checklistCategory
+	 */
+	public ChecklistCategory getChecklistCategory() {
+		return checklistCategory;
+	}
+
+	/**
+	 * @param checklistCategory the checklistCategory to set
+	 */
+	public void setChecklistCategory(ChecklistCategory checklistCategory) {
+		this.checklistCategory = checklistCategory;
 	}
 
 	/**

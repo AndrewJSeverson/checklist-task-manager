@@ -1,15 +1,20 @@
 package com.severson.taskmanager.services;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.severson.taskmanager.exceptions.ChecklistCategoryDoesNotExistException;
 import com.severson.taskmanager.exceptions.ChecklistDoesNotExistException;
 import com.severson.taskmanager.exceptions.FormValidationException;
 import com.severson.taskmanager.exceptions.UserAlreadyAddedToChecklistException;
 import com.severson.taskmanager.exceptions.UserDoesNotExistException;
 import com.severson.taskmanager.models.Checklist;
+import com.severson.taskmanager.models.ChecklistCategory;
 import com.severson.taskmanager.models.ChecklistUser;
 import com.severson.taskmanager.models.User;
+import com.severson.taskmanager.repositories.ChecklistCategoryRepository;
 import com.severson.taskmanager.repositories.ChecklistRepository;
 import com.severson.taskmanager.repositories.ChecklistUserRepository;
 import com.severson.taskmanager.repositories.UserRepository;
@@ -29,19 +34,31 @@ public class ChecklistServiceImpl implements ChecklistService{
 	UserRepository userRepository;
 	@Autowired
 	ChecklistUserRepository checklistUserRepository;
+	@Autowired
+	ChecklistCategoryRepository checklistCategoryRepository;
 
 	/* (non-Javadoc)
 	 * @see com.severson.taskmanager.services.ChecklistService#createNewChecklist(com.severson.taskmanager.requests.ChecklistRequest)
 	 */
 	@Override
-	public Checklist createNewChecklist(ChecklistRequest request) throws FormValidationException {
+	public Checklist createNewChecklist(ChecklistRequest request) throws FormValidationException, ChecklistCategoryDoesNotExistException {
 		// object to be saved 
 		Checklist checklistToCreate = new Checklist();
+		
+		// if the category is provided then check to make sure it is valid
+		ChecklistCategory checklistCategory = null;
+		if(request.getChecklistCategoryId() != null){
+			checklistCategory = checklistCategoryRepository.findOne(request.getChecklistCategoryId());
+			if(checklistCategory == null){
+				throw new ChecklistCategoryDoesNotExistException();
+			}
+		}
+				
 		// validate fields
 		checklistToCreate.setName(FormValidationHelper.validateStringField(false, 2, 255, request.getName(), "Checklist name"));
-		
-		// TODO
-		// set user creation/update information
+		checklistToCreate.setChecklistCategory(checklistCategory);
+		checklistToCreate.setCreationDate(new Date());
+		checklistToCreate.setLastUpdateDate(new Date());
 		
 		// save and return
 		return checklistRepository.save(checklistToCreate);
@@ -52,17 +69,26 @@ public class ChecklistServiceImpl implements ChecklistService{
 	 */
 	@Override
 	public Checklist updateChecklist(ChecklistRequest request, Integer checklistId)
-			throws FormValidationException, ChecklistDoesNotExistException {
+			throws FormValidationException, ChecklistDoesNotExistException, ChecklistCategoryDoesNotExistException {
 		// check for checklist in the repository
 		Checklist checklistToUpdate = checklistRepository.findOne(checklistId);
 		if(checklistToUpdate == null){
 			throw new ChecklistDoesNotExistException();
 		}
+		
+		// if the category is provided then check to make sure it is valid
+		ChecklistCategory checklistCategory = null;
+		if(request.getChecklistCategoryId() != null){
+			checklistCategory = checklistCategoryRepository.findOne(request.getChecklistCategoryId());
+			if(checklistCategory == null){
+				throw new ChecklistCategoryDoesNotExistException();
+			}
+		}
+		
 		// validate fields
 		checklistToUpdate.setName(FormValidationHelper.validateStringField(false, 2, 255, request.getName(), "Checklist name"));
-		
-		// TODO
-		// set user update information
+		checklistToUpdate.setChecklistCategory(checklistCategory);
+		checklistToUpdate.setLastUpdateDate(new Date());
 		
 		// save and return
 		return checklistRepository.save(checklistToUpdate);

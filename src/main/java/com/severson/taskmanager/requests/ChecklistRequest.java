@@ -14,6 +14,13 @@ public class ChecklistRequest {
 	 */
 	@JsonProperty("name")
 	private String name;
+	
+	/**
+	 * OPTIONAL FIELD
+	 * Id for the category on the checklist
+	 */
+	@JsonProperty("checklistCategoryId")
+	private Integer checklistCategoryId;
 
 	/**
 	 * @return the name
@@ -27,6 +34,20 @@ public class ChecklistRequest {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	/**
+	 * @return the checklistCategoryid
+	 */
+	public Integer getChecklistCategoryId() {
+		return checklistCategoryId;
+	}
+
+	/**
+	 * @param checklistCategoryid the checklistCategoryid to set
+	 */
+	public void setChecklistCategoryId(Integer checklistCategoryId) {
+		this.checklistCategoryId = checklistCategoryId;
 	}
 	
 }

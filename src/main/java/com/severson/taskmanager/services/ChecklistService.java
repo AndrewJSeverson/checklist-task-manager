@@ -1,5 +1,6 @@
 package com.severson.taskmanager.services;
 
+import com.severson.taskmanager.exceptions.ChecklistCategoryDoesNotExistException;
 import com.severson.taskmanager.exceptions.ChecklistDoesNotExistException;
 import com.severson.taskmanager.exceptions.FormValidationException;
 import com.severson.taskmanager.exceptions.UserAlreadyAddedToChecklistException;
@@ -23,7 +24,7 @@ public interface ChecklistService {
 	 * @return new checklist
 	 * @throws FormValidationException
 	 */
-	public Checklist createNewChecklist(ChecklistRequest request) throws FormValidationException;
+	public Checklist createNewChecklist(ChecklistRequest request) throws FormValidationException, ChecklistCategoryDoesNotExistException;
 	
 	/**
 	 * @param request
@@ -32,7 +33,7 @@ public interface ChecklistService {
 	 * @throws FormValidationException
 	 * @throws ChecklistDoesNotExistException
 	 */
-	public Checklist updateChecklist(ChecklistRequest request, Integer checklistId) throws FormValidationException, ChecklistDoesNotExistException;
+	public Checklist updateChecklist(ChecklistRequest request, Integer checklistId) throws FormValidationException, ChecklistDoesNotExistException, ChecklistCategoryDoesNotExistException;
 	
 	/**
 	 * @param checklistId

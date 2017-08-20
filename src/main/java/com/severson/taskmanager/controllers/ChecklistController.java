@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.severson.taskmanager.exceptions.ChecklistCategoryDoesNotExistException;
 import com.severson.taskmanager.exceptions.ChecklistDoesNotExistException;
 import com.severson.taskmanager.exceptions.FormValidationException;
 import com.severson.taskmanager.exceptions.UserAlreadyAddedToChecklistException;
@@ -85,6 +86,9 @@ public class ChecklistController {
 		} catch (FormValidationException e) {
 			logger.warn("Bad form input" , e);
 			return new ResponseEntity<>(new Response("Error", e.getMessage()), HttpStatus.BAD_REQUEST);
+		} catch (ChecklistCategoryDoesNotExistException e) {
+			logger.warn("Bad checklist category id" , e);
+			return new ResponseEntity<>(new Response("Error", "The provided checklist category does not exist"), HttpStatus.BAD_REQUEST);
 		} catch (Exception e) {
 			logger.error("Error processing request", e);
 			return new ResponseEntity<>(new Response("Error", "Internal Server Error"), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -106,6 +110,9 @@ public class ChecklistController {
 		} catch (FormValidationException e) {
 			logger.warn("Bad form input" , e);
 			return new ResponseEntity<>(new Response("Error", e.getMessage()), HttpStatus.BAD_REQUEST);
+		} catch (ChecklistCategoryDoesNotExistException e) {
+			logger.warn("Bad checklist category id" , e);
+			return new ResponseEntity<>(new Response("Error", "The provided checklist category does not exist"), HttpStatus.BAD_REQUEST);
 		} catch (ChecklistDoesNotExistException e) {
 			logger.warn("Bad checklist id" , e);
 			return new ResponseEntity<>(new Response("Error", "The provided checklist does not exist"), HttpStatus.BAD_REQUEST);
