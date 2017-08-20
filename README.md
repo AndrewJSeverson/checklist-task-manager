@@ -1,4 +1,4 @@
-Task Manager - REST API Service
+Checklist Task Manager - REST API Service
 ====================
 The Checklist Task Manager Spring-Boot application is meant to interface with a cloud foundry Postgres service to handle all interactions between the database and the users/system. 
 
@@ -33,11 +33,13 @@ The Checklist Task Manager Spring-Boot application is meant to interface with a 
 	```bash
 	mvn spring-boot:run
 	```
+1. Note that we are using hibernate to build and update our database. If you want to create the database tables yourself, do not set the __spring_jpa_hibernate_ddl-auto__ environment variable. You can access the create script at the root of this project: __create.sql__ 
 	
 ## Test Locally
 1. Once the application is running locally, navigate to [http://localhost:9000/swagger-ui.html] in your browser, or download and import the postman file at the root directory
-1. You will first want to obtain your __BEARER__ token
+1. You will first want to obtain your __BEARER__ token. The postman import contain these requests if you choose to keep the existing auth0 provider
 1. Create a user and store the ID, it will be needed for some of the APIs
+1. Enjoy the service! 
 
 
 
