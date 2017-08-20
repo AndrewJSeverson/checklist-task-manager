@@ -1,5 +1,6 @@
 package com.severson.taskmanager.services;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -117,13 +118,16 @@ public class ChecklistServiceImpl implements ChecklistService{
 			throw new UserDoesNotExistException();
 		}
 		
-		// make sure the user is not already added
-		boolean usersAlreadyAdded = checklistToUpdate.getChecklistUsers().stream()
-	            .anyMatch(u -> Integer.valueOf(u.getUser().getId()).equals(Integer.valueOf(userId)));
-		if(usersAlreadyAdded){
-			throw new UserAlreadyAddedToChecklistException();
+		if(checklistToUpdate.getChecklistUsers() != null){
+			// make sure the user is not already added
+			boolean usersAlreadyAdded = checklistToUpdate.getChecklistUsers().stream()
+		            .anyMatch(u -> Integer.valueOf(u.getUser().getId()).equals(Integer.valueOf(userId)));
+			if(usersAlreadyAdded){
+				throw new UserAlreadyAddedToChecklistException();
+			}
+		} else {
+			checklistToUpdate.setChecklistUsers(new ArrayList<ChecklistUser>());
 		}
-		
 		// create and save new record
 		ChecklistUser newCheckListUser = new ChecklistUser(userToAdd, checklistToUpdate);
 		newCheckListUser = checklistUserRepository.save(newCheckListUser);

@@ -96,6 +96,9 @@ public class UserServiceImpl implements UserService{
 		// go over each task in the checklist and look for the users completions
 		// if not there is no task completion or null completion date then task not done
 		boolean allChecklistTasksComplete = true;
+		if(checklist == null || checklist.getChecklistTasks() == null){
+			return checklist;
+		}
 		for(ChecklistTask task : checklist.getChecklistTasks()){
 			// loop over completions and compare/look for this users
 			boolean userCompletedTask = false;

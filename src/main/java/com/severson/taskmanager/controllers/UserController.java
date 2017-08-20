@@ -51,7 +51,7 @@ public class UserController {
 	 */
 	@ApiOperation(value = "Get checklists for a user", notes = "Provide user id to get checklists for that user")
 	@RequestMapping(value = "/{userId}/checklists", method = RequestMethod.GET)
-	public ResponseEntity<?> createChecklist(@RequestParam("userId") Integer userId,
+	public ResponseEntity<?> getUserChecklists(@RequestParam("userId") Integer userId,
 			@RequestHeader(value = "authorization", defaultValue = "missing") String token) {
 		try{
 			return new ResponseEntity<>(new DataResponse("Success", "Successfully retrieved checklists for user", userService.getChecklistsForUser(userId)),
