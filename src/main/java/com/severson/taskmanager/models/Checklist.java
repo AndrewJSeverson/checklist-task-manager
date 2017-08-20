@@ -51,8 +51,7 @@ public class Checklist {
 	@Column(name = "last_update_date")
 	private Date lastUpdateDate;
 	
-	@OneToMany(mappedBy = "user", cascade=CascadeType.ALL, orphanRemoval=true)
-    @JsonManagedReference
+	@OneToMany(mappedBy = "checklist", cascade=CascadeType.ALL, orphanRemoval=true)
 	public List<ChecklistUser> checklistUsers;
 	
 	@OneToMany(mappedBy = "checklist", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER)

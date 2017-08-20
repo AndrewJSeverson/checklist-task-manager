@@ -11,6 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author andrewseverson
@@ -31,7 +32,7 @@ public class ChecklistUser {
 	private User user;
 	
 	@ManyToOne  
-	@JsonBackReference
+	@JsonIgnore
     @JoinColumn(name = "checklist_id", nullable = false)
 	private Checklist checklist;
 	

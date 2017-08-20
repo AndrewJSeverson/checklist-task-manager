@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +33,7 @@ import io.swagger.annotations.ApiOperation;
  *
  */
 @Api(value = "checklist")
+@Component
 @RestController
 @RequestMapping(value = "/api/v1/checklists")
 public class ChecklistController {
