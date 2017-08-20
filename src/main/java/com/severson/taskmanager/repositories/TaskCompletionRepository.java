@@ -10,4 +10,5 @@ public interface TaskCompletionRepository extends CrudRepository<TaskCompletion,
 
 	@Query("Select t from TaskCompletion t where t.checklistUser.user.id = :userId AND t.checklistTask.id = :checklistTaskId")
 	public TaskCompletion findTaskCompletionForUserAndTask(@Param("userId") Integer userId, @Param("checklistTaskId") Integer checklistTaskId);
+
 }

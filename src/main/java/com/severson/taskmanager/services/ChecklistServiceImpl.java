@@ -17,6 +17,7 @@ import com.severson.taskmanager.models.User;
 import com.severson.taskmanager.repositories.ChecklistCategoryRepository;
 import com.severson.taskmanager.repositories.ChecklistRepository;
 import com.severson.taskmanager.repositories.ChecklistUserRepository;
+import com.severson.taskmanager.repositories.TaskCompletionRepository;
 import com.severson.taskmanager.repositories.UserRepository;
 import com.severson.taskmanager.requests.ChecklistRequest;
 import com.severson.taskmanager.utilities.FormValidationHelper;
@@ -38,6 +39,8 @@ public class ChecklistServiceImpl implements ChecklistService{
 	ChecklistCategoryRepository checklistCategoryRepository;
 	@Autowired
 	EmailService emailService;
+	@Autowired
+	TaskCompletionRepository taskCompletionRepository;
 
 	/* (non-Javadoc)
 	 * @see com.severson.taskmanager.services.ChecklistService#createNewChecklist(com.severson.taskmanager.requests.ChecklistRequest)
@@ -153,7 +156,7 @@ public class ChecklistServiceImpl implements ChecklistService{
 			throw new UserDoesNotExistException();
 		}
 		
-		// delete record
+		// delete record for checklist
 		checklistUserRepository.removeUserFromChecklist(checklistId, userId);
 		
 		// return updated checklist

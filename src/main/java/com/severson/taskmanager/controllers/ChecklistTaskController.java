@@ -75,7 +75,7 @@ public class ChecklistTaskController {
 	 * @return the updated checklist
 	 */
 	@ApiOperation(value = "Delete task", notes = "Delete")
-	@RequestMapping(value = "/{checklistId}/checklistTasks/", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/{checklistTaskId}/", method = RequestMethod.DELETE)
 	public ResponseEntity<?> deleteChecklistTask(@RequestParam("checklistTaskId") Integer checklistTaskId,
 			@RequestHeader(value = "authorization", defaultValue = "missing") String token) {
 		try{

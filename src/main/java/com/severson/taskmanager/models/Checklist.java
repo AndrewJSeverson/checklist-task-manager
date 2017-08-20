@@ -42,10 +42,10 @@ public class Checklist {
     @JoinColumn(name = "checklist_catgory_id")
 	private ChecklistCategory checklistCategory;
 	
-	@OneToMany(mappedBy = "checklist", cascade=CascadeType.ALL, orphanRemoval=true)
+	@OneToMany(mappedBy = "checklist", cascade=CascadeType.REMOVE, orphanRemoval=true)
 	public List<ChecklistUser> checklistUsers;
 	
-	@OneToMany(mappedBy = "checklist", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "checklist", cascade=CascadeType.REMOVE, orphanRemoval=true, fetch=FetchType.EAGER)
 	public List<ChecklistTask> checklistTasks;
 	
 	/**

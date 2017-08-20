@@ -50,7 +50,7 @@ public class ChecklistTask {
 	@Column(name = "reminder_date_email_send")
 	private Boolean reminderDateEmailSent;;
 	
-	@OneToMany(mappedBy = "checklistTask", cascade=CascadeType.ALL, orphanRemoval=true)
+	@OneToMany(mappedBy = "checklistTask", cascade=CascadeType.REMOVE, orphanRemoval=true)
 	public List<TaskCompletion> taskCompletions;
 	
 	@Transient
